@@ -28,5 +28,10 @@ vr_err_t vr_init(const vr_config_t* config)
         .data_out_num = I2S_PIN_NO_CHANGE,
         .data_in_num = config->audio.i2s_sd_pin
     };
+    i2s_set_pin(config->audio.i2s_port, &i2s_mic_pins);
     return VR_OK;
+}
+
+vr_err_t vr_start(void) {
+
 }
