@@ -3,10 +3,13 @@
 
 #include "vr_types.h"
 #include "vr_config.h"
+#include "esp_log.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+static const vr_state_t state = VR_STATE_IDLE;
 
 /**
  * @brief Initialize voice recognition system
