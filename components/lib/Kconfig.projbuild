@@ -1,0 +1,35 @@
+menu "Voice Recognition Configuration"
+
+    config VR_SAMPLE_RATE
+        int "Audio Sample Rate"
+        default 16000
+        range 8000 48000
+        help
+            Sample rate for audio capture in Hz
+
+    config VR_MAX_KEYWORDS
+        int "Maximum number of keywords"
+        default 8
+        range 1 16
+        help
+            Maximum number of keywords that can be stored
+
+    config VR_ENABLE_DEBUG
+        bool "Enable debug logging"
+        default n
+        help
+            Enable verbose debug logging for voice recognition
+
+    config VR_MEMORY_OPTIMIZATION
+        bool "Enable memory optimization"
+        default y
+        help
+            Use memory pools and optimization techniques
+
+    config VR_ENABLE_NOISE_REDUCTION
+        bool "Enable noise reduction"
+        default y
+        help
+            Enable built-in noise reduction algorithms
+
+endmenu
