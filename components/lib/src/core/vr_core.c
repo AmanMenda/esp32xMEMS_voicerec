@@ -2,6 +2,7 @@
 
 vr_state_t state = VR_STATE_IDLE;
 int32_t raw_samples[VR_DEFAULT_FRAME_SIZE];
+float alpha = 0.3;
 
 vr_err_t vr_init(const vr_config_t* config)
 {
@@ -44,9 +45,18 @@ void vr_set_state(vr_state_t new_state)
     state = new_state;
 }
 
+// follows the formula: y(n) = alpha*x(n) + (1 - a)*y(n-1)
+int32_t low_pass_filter(int32_t x, float y, float alpha)
+{ 
+    return (alpha * x) + (1 - alpha) * (y);
+}
+
 void send_plotter_data(int32_t* samples, size_t count) {
+    static float filter_state = .0f;
+
     for (int i = 0; i < count; i += 4) { // Une valeur sur 4 pour réduire le débit
-        printf("%ld\n", samples[i] >> 8);  // Convertir en 24-bit
+        filter_state = low_pass_filter(samples[i], filter_state, alpha);
+        printf("Raw:%ld,Filtered:%f\n", samples[i], filter_state);
     }
 }
 
@@ -54,7 +64,7 @@ vr_err_t vr_audio_capture_start()
 {
     size_t bytes_read = 0;
     int samples_read;
-    
+
     memset(raw_samples, 0, sizeof(raw_samples));
     while (1) {
         if (i2s_read(I2S_NUM_0, raw_samples, sizeof(int32_t)*VR_DEFAULT_FRAME_SIZE,
@@ -64,7 +74,6 @@ vr_err_t vr_audio_capture_start()
         samples_read = bytes_read / sizeof(int32_t);
         send_plotter_data(raw_samples, samples_read);
     }
-
     return VR_OK;
 }
 

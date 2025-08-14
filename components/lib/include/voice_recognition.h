@@ -11,6 +11,7 @@ extern "C" {
 
 extern vr_state_t state;
 extern int32_t raw_samples[VR_DEFAULT_FRAME_SIZE];
+extern float alpha;
 
 /**
  * @brief Initialize voice recognition system
