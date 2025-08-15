@@ -1,8 +1,10 @@
 idf_component_register(
     SRCS 
         "src/core/vr_core.c"
+        "src/audio/vr_audio_capture.c"
+        "src/utils/vr_low_pass_filter.c"
+        "src/utils/vr_plot_data.c"
         # "src/core/vr_state_machine.c"
-        # "src/audio/vr_audio_capture.c"
         # "src/audio/vr_audio_buffer.c"
         # "src/signal_processing/vr_feature_extraction.c"
         # "src/signal_processing/vr_fft.c"
@@ -20,11 +22,11 @@ idf_component_register(
     
     PRIV_INCLUDE_DIRS 
         "src/core"
-        # "src/audio" 
+        "src/audio"
+        "src/utils"
         # "src/signal_processing"
         # "src/recognition"
         # "src/storage"
-        # "src/utils"
     
     REQUIRES 
         driver

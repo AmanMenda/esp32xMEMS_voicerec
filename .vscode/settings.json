@@ -22,6 +22,11 @@
     "i2s.h": "c",
     "vr_types.h": "c",
     "voice_recognition.h": "c",
-    "esp_log.h": "c"
+    "esp_log.h": "c",
+    "vr_private_core.h": "c",
+    "sdkconfig.h": "c",
+    "stdbool.h": "c",
+    "vr_audio.h": "c",
+    "vr_utils.h": "c"
   }
 }

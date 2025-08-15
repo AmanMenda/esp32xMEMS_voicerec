@@ -11,6 +11,7 @@
 #define VR_DEFAULT_BUFFER_SIZE          2048
 #define VR_DEFAULT_DMA_BUF_COUNT        4
 #define VR_DEFAULT_DMA_BUF_LEN          1024
+#define VR_DEFAULT_ALPHA                0.9
 
 #define VR_DEFAULT_ENERGY_THRESHOLD     1000.0f
 #define VR_DEFAULT_SILENCE_FRAMES       10

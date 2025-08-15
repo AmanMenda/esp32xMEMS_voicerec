@@ -86,6 +86,19 @@ vr_err_t vr_set_sensitivity(float sensitivity);
  */
 vr_err_t vr_cleanup(void);
 
+/**
+ * @brief Get current microphone state
+ * @return vr_state_t
+ */
+vr_state_t vr_get_current_state(void);
+
+/**
+ * @brief Change microphone state
+ * @param New state you want to define
+ * @return void
+ */
+void vr_set_state(vr_state_t new_state);
+
 #ifdef __cplusplus
 }
 #endif
