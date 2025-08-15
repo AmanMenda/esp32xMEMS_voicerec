@@ -1,0 +1,110 @@
+\doxysection{vr\+\_\+types.\+h}
+\hypertarget{vr__types_8h_source}{}\label{vr__types_8h_source}\index{components/lib/include/vr\_types.h@{components/lib/include/vr\_types.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VR\_TYPES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VR\_TYPES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}driver/gpio.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}driver/i2s.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ Error\ codes}}
+\DoxyCodeLine{00010\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00011\ \ \ \ \ VR\_OK\ =\ 0,}
+\DoxyCodeLine{00012\ \ \ \ \ VR\_ERR\_INVALID\_ARG,}
+\DoxyCodeLine{00013\ \ \ \ \ VR\_ERR\_NO\_MEMORY,}
+\DoxyCodeLine{00014\ \ \ \ \ VR\_ERR\_INVALID\_STATE,}
+\DoxyCodeLine{00015\ \ \ \ \ VR\_ERR\_TIMEOUT,}
+\DoxyCodeLine{00016\ \ \ \ \ VR\_ERR\_NOT\_FOUND,}
+\DoxyCodeLine{00017\ \ \ \ \ VR\_ERR\_ALREADY\_EXISTS,}
+\DoxyCodeLine{00018\ \ \ \ \ VR\_ERR\_HARDWARE\_FAIL,}
+\DoxyCodeLine{00019\ \ \ \ \ VR\_ERR\_STORAGE\_FAIL}
+\DoxyCodeLine{00020\ \}\ vr\_err\_t;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ System\ states}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00024\ \ \ \ \ VR\_STATE\_IDLE,}
+\DoxyCodeLine{00025\ \ \ \ \ VR\_STATE\_LISTENING,}
+\DoxyCodeLine{00026\ \ \ \ \ VR\_STATE\_RECORDING,}
+\DoxyCodeLine{00027\ \ \ \ \ VR\_STATE\_PROCESSING,}
+\DoxyCodeLine{00028\ \ \ \ \ VR\_STATE\_TRAINING,}
+\DoxyCodeLine{00029\ \ \ \ \ VR\_STATE\_ERROR}
+\DoxyCodeLine{00030\ \}\ vr\_state\_t;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Recognition\ events}}
+\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ VR\_EVENT\_KEYWORD\_DETECTED,}
+\DoxyCodeLine{00035\ \ \ \ \ VR\_EVENT\_TRAINING\_COMPLETE,}
+\DoxyCodeLine{00036\ \ \ \ \ VR\_EVENT\_SPEECH\_START,}
+\DoxyCodeLine{00037\ \ \ \ \ VR\_EVENT\_SPEECH\_END,}
+\DoxyCodeLine{00038\ \ \ \ \ VR\_EVENT\_ERROR}
+\DoxyCodeLine{00039\ \}\ vr\_event\_t;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{comment}{//\ Audio\ configuration}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00043\ \ \ \ \ gpio\_num\_t\ i2s\_sck\_pin;}
+\DoxyCodeLine{00044\ \ \ \ \ gpio\_num\_t\ i2s\_ws\_pin;}
+\DoxyCodeLine{00045\ \ \ \ \ gpio\_num\_t\ i2s\_sd\_pin;}
+\DoxyCodeLine{00046\ \ \ \ \ i2s\_port\_t\ i2s\_port;}
+\DoxyCodeLine{00047\ \ \ \ \ uint32\_t\ sample\_rate;}
+\DoxyCodeLine{00048\ \ \ \ \ i2s\_bits\_per\_sample\_t\ bits\_per\_sample;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ buffer\_size;}
+\DoxyCodeLine{00050\ \ \ \ \ uint8\_t\ dma\_buf\_count;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ dma\_buf\_len;}
+\DoxyCodeLine{00052\ \}\ \mbox{\hyperlink{structvr__audio__config__t}{vr\_audio\_config\_t}};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{comment}{//\ Processing\ configuration}}
+\DoxyCodeLine{00055\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00056\ \ \ \ \ uint16\_t\ frame\_size;}
+\DoxyCodeLine{00057\ \ \ \ \ uint16\_t\ hop\_size;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{float}\ energy\_threshold;}
+\DoxyCodeLine{00059\ \ \ \ \ uint8\_t\ silence\_frames;}
+\DoxyCodeLine{00060\ \ \ \ \ uint8\_t\ max\_word\_frames;}
+\DoxyCodeLine{00061\ \ \ \ \ uint8\_t\ num\_mfcc\_coeffs;}
+\DoxyCodeLine{00062\ \}\ \mbox{\hyperlink{structvr__processing__config__t}{vr\_processing\_config\_t}};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ Recognition\ configuration}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ dtw\_threshold;}
+\DoxyCodeLine{00067\ \ \ \ \ uint8\_t\ max\_keywords;}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ enable\_noise\_reduction;}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{bool}\ enable\_auto\_gain\_control;}
+\DoxyCodeLine{00070\ \}\ \mbox{\hyperlink{structvr__recognition__config__t}{vr\_recognition\_config\_t}};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ Main\ configuration\ structure}}
+\DoxyCodeLine{00073\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{structvr__audio__config__t}{vr\_audio\_config\_t}}\ audio;}
+\DoxyCodeLine{00075\ \ \ \ \ \mbox{\hyperlink{structvr__processing__config__t}{vr\_processing\_config\_t}}\ processing;}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{structvr__recognition__config__t}{vr\_recognition\_config\_t}}\ recognition;}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ enable\_debug\_logs;}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ nvs\_namespace;}
+\DoxyCodeLine{00079\ \}\ \mbox{\hyperlink{structvr__config__t}{vr\_config\_t}};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{comment}{//\ Recognition\ result}}
+\DoxyCodeLine{00082\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00083\ \ \ \ \ uint8\_t\ keyword\_id;}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{char}\ keyword\_name[32];}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{float}\ confidence;}
+\DoxyCodeLine{00086\ \ \ \ \ uint32\_t\ timestamp;}
+\DoxyCodeLine{00087\ \}\ \mbox{\hyperlink{structvr__recognition__result__t}{vr\_recognition\_result\_t}};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{comment}{//\ System\ status}}
+\DoxyCodeLine{00090\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ vr\_state\_t\ current\_state;}
+\DoxyCodeLine{00092\ \ \ \ \ uint8\_t\ active\_keywords;}
+\DoxyCodeLine{00093\ \ \ \ \ uint32\_t\ total\_recognitions;}
+\DoxyCodeLine{00094\ \ \ \ \ uint32\_t\ false\_positives;}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{float}\ average\_confidence;}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ free\_heap;}
+\DoxyCodeLine{00097\ \}\ \mbox{\hyperlink{structvr__status__t}{vr\_status\_t}};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{//\ Callback\ function\ type}}
+\DoxyCodeLine{00100\ \textcolor{keyword}{typedef}\ void\ (*vr\_recognition\_callback\_t)(vr\_event\_t\ event,\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{structvr__recognition__result__t}{vr\_recognition\_result\_t}}*\ result,\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ user\_data);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VR\_TYPES\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,52 @@
+\doxysection{voice\+\_\+recognition.\+h}
+\hypertarget{voice__recognition_8h_source}{}\label{voice__recognition_8h_source}\index{components/lib/include/voice\_recognition.h@{components/lib/include/voice\_recognition.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VOICE\_RECOGNITION\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VOICE\_RECOGNITION\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}vr\_types.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}vr\_config.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}esp\_log.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00009\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{extern}\ vr\_state\_t\ state;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{extern}\ int32\_t\ raw\_samples[VR\_DEFAULT\_FRAME\_SIZE];}
+\DoxyCodeLine{00014\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{float}\ alpha;}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00021\ vr\_err\_t\ vr\_init(\textcolor{keyword}{const}\ \mbox{\hyperlink{structvr__config__t}{vr\_config\_t}}*\ config);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ vr\_err\_t\ vr\_start(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ vr\_err\_t\ vr\_stop(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00040\ vr\_err\_t\ vr\_register\_callback(vr\_recognition\_callback\_t\ callback,\ \textcolor{keywordtype}{void}*\ user\_data);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00048\ vr\_err\_t\ vr\_add\_keyword(uint8\_t\ keyword\_id,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ keyword\_name);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ vr\_err\_t\ vr\_start\_training(uint8\_t\ keyword\_id);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00061\ vr\_err\_t\ vr\_save\_templates(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ vr\_err\_t\ vr\_load\_templates(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00074\ vr\_err\_t\ vr\_get\_status(\mbox{\hyperlink{structvr__status__t}{vr\_status\_t}}*\ status);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00081\ vr\_err\_t\ vr\_set\_sensitivity(\textcolor{keywordtype}{float}\ sensitivity);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ vr\_err\_t\ vr\_cleanup(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ vr\_state\_t\ vr\_get\_current\_state(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00100\ \textcolor{keywordtype}{void}\ vr\_set\_state(vr\_state\_t\ new\_state);}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00103\ \}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VOICE\_RECOGNITION\_H}}
+
+\end{DoxyCode}

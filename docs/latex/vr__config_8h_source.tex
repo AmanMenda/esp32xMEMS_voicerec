@@ -1,0 +1,72 @@
+\doxysection{vr\+\_\+config.\+h}
+\hypertarget{vr__config_8h_source}{}\label{vr__config_8h_source}\index{components/lib/include/vr\_config.h@{components/lib/include/vr\_config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ VR\_CONFIG\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ VR\_CONFIG\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}sdkconfig.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}vr\_types.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ Default\ configuration\ values}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_SAMPLE\_RATE\ \ \ \ \ \ \ \ \ \ 16000}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_FRAME\_SIZE\ \ \ \ \ \ \ \ \ \ \ 512}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_HOP\_SIZE\ \ \ \ \ \ \ \ \ \ \ \ \ 256}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_BUFFER\_SIZE\ \ \ \ \ \ \ \ \ \ 2048}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_DMA\_BUF\_COUNT\ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_DMA\_BUF\_LEN\ \ \ \ \ \ \ \ \ \ 1024}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_ALPHA\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.9}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_ENERGY\_THRESHOLD\ \ \ \ \ 1000.0f}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_SILENCE\_FRAMES\ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_MAX\_WORD\_FRAMES\ \ \ \ \ \ 40}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_NUM\_MFCC\_COEFFS\ \ \ \ \ \ 6}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_DTW\_THRESHOLD\ \ \ \ \ \ \ \ 15.0f}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_MAX\_KEYWORDS\ \ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_NVS\_NAMESPACE\ \ \ \ \ \ \ \ "{}voice\_rec"{}}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Configuration\ macros\ based\ on\ menuconfig}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_VR\_SAMPLE\_RATE}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ CONFIG\_VR\_SAMPLE\_RATE\ \ \ \ \ \ \ \ \ \ \ VR\_DEFAULT\_SAMPLE\_RATE}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_VR\_MAX\_KEYWORDS}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ CONFIG\_VR\_MAX\_KEYWORDS\ \ \ \ \ \ \ \ \ \ VR\_DEFAULT\_MAX\_KEYWORDS}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ Default\ configuration\ initializer}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#define\ VR\_DEFAULT\_CONFIG()\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ .audio\ =\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .i2s\_sck\_pin\ =\ GPIO\_NUM\_14,\ \(\backslash\)}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .i2s\_ws\_pin\ =\ GPIO\_NUM\_15,\ \(\backslash\)}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .i2s\_sd\_pin\ =\ GPIO\_NUM\_32,\ \(\backslash\)}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .i2s\_port\ =\ I2S\_NUM\_0,\ \(\backslash\)}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .sample\_rate\ =\ CONFIG\_VR\_SAMPLE\_RATE,\ \(\backslash\)}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .bits\_per\_sample\ =\ I2S\_BITS\_PER\_SAMPLE\_32BIT,\ \(\backslash\)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .buffer\_size\ =\ VR\_DEFAULT\_BUFFER\_SIZE,\ \(\backslash\)}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .dma\_buf\_count\ =\ VR\_DEFAULT\_DMA\_BUF\_COUNT,\ \(\backslash\)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .dma\_buf\_len\ =\ VR\_DEFAULT\_DMA\_BUF\_LEN\ \(\backslash\)}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\ \ \ \ \},\ \(\backslash\)}}
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\ \ \ \ .processing\ =\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .frame\_size\ =\ VR\_DEFAULT\_FRAME\_SIZE,\ \(\backslash\)}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .hop\_size\ =\ VR\_DEFAULT\_HOP\_SIZE,\ \(\backslash\)}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .energy\_threshold\ =\ VR\_DEFAULT\_ENERGY\_THRESHOLD,\ \(\backslash\)}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .silence\_frames\ =\ VR\_DEFAULT\_SILENCE\_FRAMES,\ \(\backslash\)}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .max\_word\_frames\ =\ VR\_DEFAULT\_MAX\_WORD\_FRAMES,\ \(\backslash\)}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .num\_mfcc\_coeffs\ =\ VR\_DEFAULT\_NUM\_MFCC\_COEFFS\ \(\backslash\)}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\ \ \ \ \},\ \(\backslash\)}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\ \ \ \ .recognition\ =\ \{\ \(\backslash\)}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .dtw\_threshold\ =\ VR\_DEFAULT\_DTW\_THRESHOLD,\ \(\backslash\)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .max\_keywords\ =\ CONFIG\_VR\_MAX\_KEYWORDS,\ \(\backslash\)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .enable\_noise\_reduction\ =\ true,\ \(\backslash\)}}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ .enable\_auto\_gain\_control\ =\ true\ \(\backslash\)}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\ \ \ \ \},\ \(\backslash\)}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\ \ \ \ .enable\_debug\_logs\ =\ false,\ \(\backslash\)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\ \ \ \ .nvs\_namespace\ =\ VR\_DEFAULT\_NVS\_NAMESPACE\ \(\backslash\)}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\}}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ VR\_CONFIG\_H}}
+
+\end{DoxyCode}

@@ -1,0 +1,20 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"classes.html":[0,1],
+"dir_409f97388efe006bc3438b95e9edef48.html":[1,0,0],
+"dir_f1e676d8da21eccc19ce7d3c8f06d0f9.html":[1,0,0,0],
+"dir_f726020acfc8a4edc7c01f98bea16cfb.html":[1,0,0,0,0],
+"files.html":[1,0],
+"index.html":[],
+"pages.html":[],
+"structvr__audio__config__t.html":[0,0,0],
+"structvr__config__t.html":[0,0,1],
+"structvr__processing__config__t.html":[0,0,2],
+"structvr__recognition__config__t.html":[0,0,3],
+"structvr__recognition__result__t.html":[0,0,4],
+"structvr__status__t.html":[0,0,5],
+"voice__recognition_8h_source.html":[1,0,0,0,0,0],
+"vr__config_8h_source.html":[1,0,0,0,0,1],
+"vr__types_8h_source.html":[1,0,0,0,0,2]
+};
